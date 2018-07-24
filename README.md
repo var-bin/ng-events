@@ -1,2 +1,2 @@
 # ng-events
-Angular App for creating/sharing events related to Angular field
+Angular App for creating/sharing events related to the Angular field
