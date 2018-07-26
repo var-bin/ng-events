@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'event-thumbnail',
-  templateUrl: './event-thumbnail.component.html'
+  selector: "event-thumbnail",
+  templateUrl: "./event-thumbnail.component.html"
 })
 
 export class EventThumbnailComponent {
