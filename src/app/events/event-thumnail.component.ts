@@ -23,4 +23,15 @@ export class EventThumbnailComponent {
       bold: isEarlyStart
     };
   }
+
+  get startTimeStyles() {
+    if (this.event && this.event.time === '8:00 am') {
+      return {
+        "color": "#b2ff59",
+        "font-weight": "bold"
+      };
+    }
+
+    return null;
+  }
 }
