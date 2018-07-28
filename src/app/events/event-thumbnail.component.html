@@ -1,7 +1,7 @@
 <div class="well hoverwell thumbnail">
   <h2>{{event.name}}</h2>
   <div>Date: {{event.date}}</div>
-  <div [ngClass]="startTimeClass"
+  <div [ngStyle]="startTimeStyles"
        [ngSwitch]="event.time">
     Time: {{event.time}}
     <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
