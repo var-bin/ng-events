@@ -16,7 +16,7 @@ export class EventThumbnailComponent {
   @Input() event: any;
 
   get startTimeClass() {
-    const isEarlyStart = this.event && this.event.time === '8:00 am';
+    const isEarlyStart = this.event && this.event.time === "8:00 am";
 
     return {
       green: isEarlyStart,
@@ -25,7 +25,7 @@ export class EventThumbnailComponent {
   }
 
   get startTimeStyles() {
-    if (this.event && this.event.time === '8:00 am') {
+    if (this.event && this.event.time === "8:00 am") {
       return {
         "color": "#b2ff59",
         "font-weight": "bold"
