@@ -16,12 +16,18 @@
       <div>
         <strong>Price:</strong> ${{event.price}}</div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="event.location">
       <address>
         <strong>Address:</strong>
-        <br /> {{event.location?.address}}
-        <br /> {{event.location?.city}}, {{event.location?.country}}
+        <br /> {{event.location.address}}
+        <br /> {{event.location.city}}, {{event.location.country}}
       </address>
+    </div>
+
+    <div *ngIf="event.onlineUrl">
+      <a href="{{event.onlineUrl}}">
+        {{event.onlineUrl}}
+      </a>
     </div>
   </div>
 </div>
