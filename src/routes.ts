@@ -6,6 +6,7 @@ import { CreateEventComponent } from "./app/events/create-event/create-event.com
 import { Error404Component } from "./app/errors/error-404.component";
 
 import { EventRouteActivator } from "./app/events/event-route-activator.service";
+import { EventListResolver } from "./app/events/event-list-resolver.service";
 
 const appRoutes: Routes = [
   {
@@ -15,7 +16,10 @@ const appRoutes: Routes = [
   },
   {
     path: "events",
-    component: EventsListComponent
+    component: EventsListComponent,
+    resolve: {
+      events: EventListResolver
+    }
   },
   {
     path: "events/:id",

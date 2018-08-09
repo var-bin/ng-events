@@ -7,10 +7,15 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a routerLink="/events">All Events</a>
+          <a routerLink="/events"
+             class="nav__link"
+             [routerLinkActiveOptions]="{exact: true}"
+             routerLinkActive="is-active">All Events</a>
         </li>
         <li>
-          <a routerLink="/events/new">Create Event</a>
+          <a routerLink="/events/new"
+             class="nav__link"
+             routerLinkActive="is-active">Create Event</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -19,7 +24,7 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="">Angular Connect</a>
+              <a href="#">Angular Connect</a>
             </li>
           </ul>
         </li>
