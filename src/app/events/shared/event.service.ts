@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs/Subject";
+import { Observable } from "rxjs/observable";
 
 import { IEvent } from "./event.model";
 
@@ -312,7 +313,7 @@ export class EventService {
     }
   ];
 
-  get events(): Subject<IEvent[]> {
+  get events(): Observable<IEvent[]> {
     const subject = new Subject<IEvent[]>();
 
     setTimeout(() => {
