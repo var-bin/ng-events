@@ -4,4 +4,11 @@ import { Component } from "@angular/core";
   templateUrl: "./login.component.html"
 })
 
-export class LoginComponent {}
+export class LoginComponent {
+  userName: string;
+  userPassword: string;
+
+  onLogin(values) {
+    console.log("onLogin: ", values);
+  }
+}
