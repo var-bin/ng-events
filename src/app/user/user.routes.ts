@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 
-import { UserProfileComponent } from "./user-profile.component";
+import { UserProfileComponent } from "./profile/profile.component";
 import { LoginComponent } from "./login/login.component";
 
 const userRoutes: Routes = [
