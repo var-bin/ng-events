@@ -4,12 +4,20 @@ import { Router } from "@angular/router";
 import { UserAuthService } from "../user-auth.service";
 
 @Component({
-  templateUrl: "./login.component.html"
+  templateUrl: "./login.component.html",
+  styles: [`
+    .login-error {
+      color: red;
+      float: right;
+      padding-left: 10px;
+    }
+  `]
 })
 
 export class LoginComponent {
   userName: string;
   userPassword: string;
+  mouseoverLogin: boolean;
 
   constructor(
     private userAuthService: UserAuthService,
