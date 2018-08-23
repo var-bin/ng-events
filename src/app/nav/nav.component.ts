@@ -25,6 +25,6 @@ export class NavComponent {
   }
 
   get userName(): string {
-    return this.userAuthService.userName;
+    return this.userAuthService.firstName;
   }
 }
