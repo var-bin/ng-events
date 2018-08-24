@@ -8,8 +8,9 @@
           (ngSubmit)="onSubmit(profileForm.value)"
           >
       <div class="form-group"
-           [ngClass]="getErrorCSSClass('firstName')">
-        <em>Required</em>
+           [ngClass]="{'profile-error': getErrorCSSClass('firstName'), 'profile-error_pattern': getPatternErrorCSSClass('firstName')}">
+        <em class="profile-error__required">Required</em>
+        <em class="profile-error__pattern">Must start with a letter</em>
         <label for="firstName">First Name:</label>
         <input id="firstName"
           type="text"
@@ -18,8 +19,8 @@
           formControlName="firstName"/>
       </div>
       <div class="form-group"
-           [ngClass]="getErrorCSSClass('lastName')">
-        <em>Required</em>
+           [ngClass]="{'profile-error': getErrorCSSClass('lastName')}">
+        <em class="profile-error__required">Required</em>
         <label for="lastName">Last Name:</label>
         <input id="lastName"
           type="text"
