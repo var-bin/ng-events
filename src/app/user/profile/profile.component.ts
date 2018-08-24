@@ -7,9 +7,19 @@ import { UserAuthService } from "../user-auth.service";
 @Component({
   templateUrl: "./profile.component.html",
   styles: [`
-    em { display: none; }
+    .profile-error__required,
+    .profile-error__pattern,
+    .profile-error.profile-error_pattern .profile-error__required {
+      display: none;
+    }
 
-    .profile-error em {
+    .profile-error_pattern .profile-error__pattern {
+      display: block;
+      float: right;
+      color: yellow;
+    }
+
+    .profile-error .profile-error__required {
       display: block;
       float: right;
       color: red;
@@ -21,6 +31,10 @@ import { UserAuthService } from "../user-auth.service";
 
     .profile-error input::placeholder {
       color: crimson;
+    }
+
+    .profile-error-pattern {
+      background-color: antiquewhite;
     }
   `]
 })
@@ -39,7 +53,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.firstName = new FormControl(
       this.userAuthService.firstName,
-      Validators.required
+      [
+        Validators.required,
+        Validators.pattern(/[aA-zZ].*/)
+      ]
     );
     this.lastName = new FormControl(
       this.userAuthService.lastName,
@@ -65,11 +82,15 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate["events"];
   }
 
-  getErrorCSSClass(controlName: string): string {
-    const ERROR_CSS_CLASS = "profile-error";
-
+  getErrorCSSClass(controlName: string): boolean {
     if (this[controlName].invalid && this[controlName].touched) {
-      return ERROR_CSS_CLASS;
+      return true;
+    }
+  }
+
+  getPatternErrorCSSClass(controlName: string): boolean {
+    if (this[controlName].errors && this[controlName].errors.pattern) {
+      return true;
     }
   }
 }
