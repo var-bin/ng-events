@@ -70,7 +70,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate["events"];
+    this.router.navigate["/events"];
   }
 
   onSubmit(data): void {
@@ -79,7 +79,7 @@ export class UserProfileComponent implements OnInit {
       data.lastName
     );
 
-    this.router.navigate["events"];
+    this.router.navigate["/events"];
   }
 
   getErrorCSSClass(controlName: string): boolean {
