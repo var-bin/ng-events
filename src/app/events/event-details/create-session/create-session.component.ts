@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { ISession } from "../../shared/event.model";
+import { restrictedWords } from "../../shared/restricted-words.validator";
 
 @Component({
   templateUrl: "./create-session.component.html",
@@ -59,7 +60,7 @@ export class CreateSessionComponent implements OnInit {
       abstract: new FormControl("", [
         Validators.required,
         Validators.maxLength(400),
-        this.restrictedWords(["foo", "bar"])
+        restrictedWords(["foo", "bar"])
       ])
     });
   }
@@ -88,22 +89,6 @@ export class CreateSessionComponent implements OnInit {
     if (this.newSessionForm.controls[controlName].errors && this.newSessionForm.controls[controlName].errors.maxlength) {
       return true;
     }
-  }
-
-  private restrictedWords(words: any[]) {
-    return (control: FormControl): { [key: string]: any } => {
-      if (!words) {
-        return null;
-      }
-
-      const invalidWords = words
-        .map((w) => control.value.includes(w) ? w : null)
-        .filter((w) => w !== null);
-
-      return invalidWords && invalidWords.length > 0
-        ? { "restrictedWords": invalidWords.join(", ") }
-        : null;
-    };
   }
 
   getRestrictedWordsErrorCSSClass(controlName: any): boolean {
