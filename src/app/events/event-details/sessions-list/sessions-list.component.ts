@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+
+import { ISession } from "../../shared/session.model";
 
 @Component({
   selector: "sessions-list",
@@ -6,4 +8,5 @@ import { Component } from "@angular/core";
 })
 
 export class SessionsListComponent {
+  @Input() sessions: ISession[];
 }

@@ -30,4 +30,10 @@
       </a>
     </div>
   </div>
+
+  <hr>
+
+  <sessions-list
+    *ngIf="!!event.sessions"
+    [sessions]="event.sessions"></sessions-list>
 </div>
