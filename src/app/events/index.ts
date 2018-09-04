@@ -9,3 +9,5 @@ export { CreateSessionComponent } from "./event-details/create-session/create-se
 export { EventService } from "./shared/event.service";
 export { EventRouteActivator } from "./event-route-activator.service";
 export { EventListResolver } from "./event-list-resolver.service";
+
+export { SessionsListComponent } from "./event-details/sessions-list/sessions-list.component"
