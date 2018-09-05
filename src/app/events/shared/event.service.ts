@@ -328,10 +328,16 @@ export class EventService {
     return this.myEvents.find((event) => event.id === id);
   }
 
-  saveEvent(newEvent: IEvent) {
+  saveEvent(newEvent: IEvent): void {
     newEvent.id = 999;
     newEvent.sessions = [];
 
     this.myEvents.push(newEvent);
+  }
+
+  updateEvent(event: IEvent): void {
+    const index = this.myEvents.findIndex(x => x.id === event.id);
+
+    this.myEvents[index] = event;
   }
 }
