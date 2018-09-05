@@ -4,7 +4,8 @@
 <div class="col-md-6">
   <form autocomplete="off"
     [formGroup]="newSessionForm"
-    (ngSubmit)="saveSession(newSessionForm.value)">
+    (ngSubmit)="onSaveSession(newSessionForm.value)"
+    novalidate>
     <div class="form-group"
       [ngClass]="{'session-error': getErrorCSSClass('sessionName')}">
       <label for="sessionName">Session Name:</label>
@@ -63,11 +64,13 @@
         formControlName="abstract"></textarea>
     </div>
     <button type="submit"
-      class="btn btn-primary">
+      class="btn btn-primary"
+      [disabled]="newSessionForm.invalid">
       Save
     </button>
     <button type="button"
-      class="btn btn-default">
+      class="btn btn-default"
+      (click)="onCancel()">
       Cancel
     </button>
   </form>
