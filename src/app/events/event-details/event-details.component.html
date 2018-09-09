@@ -30,4 +30,28 @@
       </a>
     </div>
   </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-2">
+      <h3>Sessions</h3>
+    </div>
+
+    <div class="col-md-2">
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleCreateForm()">
+        Add session
+      </button>
+    </div>
+  </div>
+
+  <sessions-list
+    *ngIf="!!event.sessions && !addMode"
+    [sessions]="event.sessions"></sessions-list>
+  <create-session
+    *ngIf="addMode"
+    (saveNewSession)="onSaveNewSession($event)"
+    (cancelNewSession)="onCancelNewSession($event)"></create-session>
 </div>

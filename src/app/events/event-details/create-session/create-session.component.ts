@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-import { ISession } from "../../shared/event.model";
+import { ISession } from "../../shared/session.model";
 import { restrictedWords } from "../../shared/restricted-words.validator";
 
 @Component({
+  selector: "create-session",
   templateUrl: "./create-session.component.html",
   styles: [`
     .session-error__required,
@@ -51,6 +52,9 @@ import { restrictedWords } from "../../shared/restricted-words.validator";
 export class CreateSessionComponent implements OnInit {
   newSessionForm: FormGroup;
 
+  @Output() saveNewSession = new EventEmitter<ISession>();
+  @Output() cancelNewSession = new EventEmitter<void>();
+
   ngOnInit() {
     this.newSessionForm = new FormGroup({
       sessionName: new FormControl("", Validators.required),
@@ -65,7 +69,7 @@ export class CreateSessionComponent implements OnInit {
     });
   }
 
-  saveSession(formData): void {
+  onSaveSession(formData): void {
     const session: ISession = {
       id: undefined,
       name: formData.sessionName,
@@ -75,6 +79,8 @@ export class CreateSessionComponent implements OnInit {
       abstract: formData.abstract,
       voters: []
     };
+
+    this.saveNewSession.emit(session);
 
     console.log(formData, session);
   }
@@ -96,5 +102,9 @@ export class CreateSessionComponent implements OnInit {
     console.log(this.newSessionForm.controls[controlName])
       return true;
     }
+  }
+
+  onCancel(): void {
+    this.cancelNewSession.emit();
   }
 }
