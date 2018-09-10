@@ -13,7 +13,8 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  SessionsListComponent
+  SessionsListComponent,
+  SessionListTableComponent
 } from "./events/index";
 
 import { Error404Component } from "./errors/error-404.component";
@@ -42,7 +43,8 @@ import {
     Error404Component,
     CreateSessionComponent,
     SessionsListComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    SessionListTableComponent
   ],
   imports: [
     BrowserModule,
