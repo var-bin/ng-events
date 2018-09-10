@@ -1,4 +1,4 @@
-import { Directive, OnInit, ElementRef } from "@angular/core";
+import { Directive, OnInit, ElementRef, Input } from "@angular/core";
 
 declare const $: any;
 
@@ -9,6 +9,8 @@ declare const $: any;
 export class ModalTriggerDirective implements OnInit {
   private el: HTMLElement;
 
+  @Input('modal-trigger') modalId: string;
+
   constructor(
     ref: ElementRef
   ) {
@@ -16,8 +18,10 @@ export class ModalTriggerDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.el.addEventListener("click", () => {
-      $("#simple-modal").modal();
+    this.el.addEventListener("click", (e) => {
+      console.log(this.modalId);
+
+      $(`#${this.modalId}`).modal();
     });
   }
 }
