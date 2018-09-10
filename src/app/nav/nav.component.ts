@@ -45,7 +45,5 @@ export class NavComponent {
 
         console.log("onSubmitSearch: ", this.foundItems);
       });
-
-
   }
 }
