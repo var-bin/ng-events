@@ -10,4 +10,5 @@ export { EventService } from "./shared/event.service";
 export { EventRouteActivator } from "./event-route-activator.service";
 export { EventListResolver } from "./event-list-resolver.service";
 
-export { SessionsListComponent } from "./event-details/sessions-list/sessions-list.component"
+export { SessionsListComponent } from "./event-details/sessions-list/sessions-list.component";
+export { SessionListTableComponent } from "./event-details/session-list-table/session-list-table.component";
