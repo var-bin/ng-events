@@ -2,14 +2,10 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "simple-modal",
-  templateUrl: "./simple-modal.component.html",
-  styles: [`
-    .modal-body {
-
-    }
-  `]
+  templateUrl: "./simple-modal.component.html"
 })
 
 export class SimpleModalComponent {
-  @Input() title: string;
+  @Input() modalTitle: string;
+  @Input() modalId: string;
 }
