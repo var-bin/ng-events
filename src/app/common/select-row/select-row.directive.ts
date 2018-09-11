@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit } from "@angular/core";
+import { Directive, ElementRef, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Directive({
   selector: "[select-row]"
@@ -18,14 +18,11 @@ export class SelectRowDirective implements OnInit {
     this.el = this.ref.nativeElement;
   }
 
-  ngOnInit() {
-    this.el.addEventListener("click", (e) => {
-      this.onHighlightTr(e);
-    });
+  @Output() selectedTr = new EventEmitter<Element>();
 
-    this.el.addEventListener("keydown", (e) => {
-      this.onArrowKeysHighlightTr(e);
-    })
+  ngOnInit() {
+    this.el.addEventListener("click", this.onHighlightTr.bind(this));
+    this.el.addEventListener("keydown", this.onArrowKeysHighlightTr.bind(this));
   }
 
   onHighlightTr(event: Event) {
@@ -34,8 +31,6 @@ export class SelectRowDirective implements OnInit {
     if (CLICKED_TARGET.tagName === this.TD_TAG) {
       this.removeHighlight();
       CLICKED_TARGET.parentElement.classList.add(this.CSS_CLASS);
-
-      console.log("Need add css class", CLICKED_TARGET, event);
     }
   }
 
@@ -56,20 +51,20 @@ export class SelectRowDirective implements OnInit {
     if (doHighlightNextTr && isArrowDownPressed) {
       this.removeHighlight();
       selected.nextElementSibling.classList.add(this.CSS_CLASS);
+      this.selectedTr.emit(selected.nextElementSibling);
     }
 
     // move up
     if (doHighlightPrevTr && isArrowUpPressed) {
       this.removeHighlight();
       selected.previousElementSibling.classList.add(this.CSS_CLASS);
+      this.selectedTr.emit(selected.previousElementSibling);
     }
   }
 
   private removeHighlight() {
     const _forEach = Array.prototype.forEach;
     const selectedTrs = this.el.querySelectorAll(`.${this.CSS_CLASS}`);
-
-    console.log("selectedTrs: ", selectedTrs);
 
     if (selectedTrs.length > 0) {
       _forEach.call(selectedTrs, (tr: HTMLElement) => {
