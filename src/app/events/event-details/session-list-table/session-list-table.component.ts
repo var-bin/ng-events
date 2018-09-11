@@ -14,4 +14,8 @@ import { Component } from "@angular/core";
   `]
 })
 
-export class SessionListTableComponent {}
+export class SessionListTableComponent {
+  onSelectedTr(el) {
+    console.log("onSelectedTr: ", el);
+  }
+}
