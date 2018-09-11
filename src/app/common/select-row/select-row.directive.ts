@@ -42,7 +42,7 @@ export class SelectRowDirective implements OnInit {
     const isArrowDownPressed = this.ENABLED_KEYS.arrowDown === keyCode;
     const isArrowUpPressed = this.ENABLED_KEYS.arrowUp === keyCode;
 
-    // there is no selected tr
+    // there is not selected tr
     if (!selected) {
       return;
     }
@@ -66,13 +66,10 @@ export class SelectRowDirective implements OnInit {
   }
 
   private removeHighlight() {
-    const _forEach = Array.prototype.forEach;
-    const selectedTrs = this.el.querySelectorAll(`.${this.CSS_CLASS}`);
+    const highlightedTr = this.el.querySelector(`.${this.CSS_CLASS}`);
 
-    if (selectedTrs.length > 0) {
-      _forEach.call(selectedTrs, (tr: HTMLElement) => {
-        tr.classList.remove(this.CSS_CLASS);
-      });
+    if (highlightedTr) {
+      highlightedTr.classList.remove(this.CSS_CLASS);
     }
   }
 }
