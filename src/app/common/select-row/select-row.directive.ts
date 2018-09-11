@@ -47,6 +47,9 @@ export class SelectRowDirective implements OnInit {
       return;
     }
 
+    // disable to scroll a page
+    event.preventDefault();
+
     // move down
     if (doHighlightNextTr && isArrowDownPressed) {
       this.removeHighlight();
