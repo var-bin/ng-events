@@ -1,4 +1,9 @@
-import { Directive, OnInit, ElementRef, Input } from "@angular/core";
+import {
+  Directive,
+  OnInit,
+  ElementRef,
+  Input
+} from "@angular/core";
 
 declare const $: any;
 
@@ -12,9 +17,9 @@ export class ModalTriggerDirective implements OnInit {
   @Input('modal-trigger') modalId: string;
 
   constructor(
-    ref: ElementRef
+    private ref: ElementRef
   ) {
-    this.el = ref.nativeElement;
+    this.el = this.ref.nativeElement;
   }
 
   ngOnInit() {
