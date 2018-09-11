@@ -27,7 +27,8 @@ import { appRoutes } from "../routes";
 import {
   ToastrService,
   SimpleModalComponent,
-  ModalTriggerDirective
+  ModalTriggerDirective,
+  SelectRowDirective
 } from "./common/index";
 
 
@@ -44,7 +45,8 @@ import {
     CreateSessionComponent,
     SessionsListComponent,
     ModalTriggerDirective,
-    SessionListTableComponent
+    SessionListTableComponent,
+    SelectRowDirective
   ],
   imports: [
     BrowserModule,
