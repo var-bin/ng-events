@@ -1,7 +1,7 @@
 <div class="well hoverwell thumbnail">
   <h2>
     <a [routerLink]="['/events', event.id]">
-      {{event.name}}
+      {{event.name | uppercase}}
     </a>
   </h2>
   <div>Date: {{event.date}}</div>
