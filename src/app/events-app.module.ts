@@ -13,7 +13,8 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  SessionsListComponent
+  SessionsListComponent,
+  DurationPipe
 } from "./events/index";
 
 import { Error404Component } from "./errors/error-404.component";
@@ -37,7 +38,8 @@ import { appRoutes } from "../routes";
     Error404Component,
     CreateSessionComponent,
     SessionsListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
