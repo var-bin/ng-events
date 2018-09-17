@@ -4,7 +4,7 @@
       {{event.name | uppercase}}
     </a>
   </h2>
-  <div>Date: {{event.date}}</div>
+  <div>Date: {{event.date | date:'longDate'}}</div>
   <div [ngStyle]="startTimeStyles"
        [ngSwitch]="event.time">
     Time: {{event.time}}
@@ -12,7 +12,7 @@
     <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
     <span *ngSwitchDefault>(Normal Start)</span>
   </div>
-  <div>Price: ${{event.price}}</div>
+  <div>Price: {{event.price | currency}}</div>
   <div *ngIf="event.location">
     <span>Location: {{event.location.address}}</span>
     <span>&nbsp;</span>
