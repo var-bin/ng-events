@@ -17,6 +17,7 @@ import { IEvent } from "../shared/event.model";
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean = false;
+  filterBy: string = "all";
 
   constructor(
     private eventService: EventService,
@@ -44,5 +45,21 @@ export class EventDetailsComponent implements OnInit {
 
   onCancelNewSession() {
     this.toggleCreateForm();
+  }
+
+  get filterByValue() {
+    return this.filterBy;
+  }
+
+  set filterByValue(value: string) {
+    this.filterBy = value;
+  }
+
+  isActive(value: string) {
+    return this.filterByValue === value;
+  }
+
+  onClickButton(value: string) {
+    this.filterByValue = value;
   }
 }
