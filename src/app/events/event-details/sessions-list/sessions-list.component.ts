@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 
 import { ISession } from "../../shared/session.model";
 
@@ -7,6 +7,18 @@ import { ISession } from "../../shared/session.model";
   templateUrl: "./sessions-list.component.html"
 })
 
-export class SessionsListComponent {
+export class SessionsListComponent implements OnChanges {
   @Input() sessions: ISession[];
+  @Input() filterBy: string;
+
+  visibleSession: ISession[];
+
+  ngOnChanges() {
+    if (this.filterBy === "all") {
+      this.visibleSession = this.sessions.slice(0);
+    } else {
+      this.visibleSession = this.sessions
+        .filter(session => session.level.toLocaleLowerCase() === this.filterBy);
+    }
+  }
 }
