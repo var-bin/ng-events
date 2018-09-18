@@ -1,5 +1,13 @@
+<div [hidden]="visibleSession.length">
+  <hr/>
+
+  <h4>
+    No data
+  </h4>
+</div>
+
 <div class="row"
-  *ngFor="let session of sessions">
+  *ngFor="let session of visibleSession">
   <div class="col-md-10">
     <collapsible-well>
       <div data-well-title>
