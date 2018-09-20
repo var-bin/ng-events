@@ -35,37 +35,55 @@
 
   <div class="row">
     <div class="col-md-2">
-      <h3>Sessions</h3>
+      <h3 class="sessions-title">Sessions</h3>
     </div>
 
     <div class="col-md-7">
-      <button type="button"
-        class="btn btn-default"
-        [class.active]="isActive('all')"
-        (click)="onClickButton('all')">
-        All
-      </button>
+      <div class="btn-group btn-group-sm btn-group-sort-by">
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isSortActive('name')"
+          (click)="onSortButton('name')">
+          By Name
+        </button>
 
-      <button type="button"
-        class="btn btn-default"
-        [class.active]="isActive('beginner')"
-        (click)="onClickButton('beginner')">
-        Beginner
-      </button>
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isSortActive('votes')"
+          (click)="onSortButton('votes')">
+          By Votes
+        </button>
+      </div>
 
-      <button type="button"
-        class="btn btn-default"
-        [class.active]="isActive('intermediate')"
-        (click)="onClickButton('intermediate')">
-        Intermediate
-      </button>
+      <div class="btn-group btn-group-sm">
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('all')"
+          (click)="onFilterButton('all')">
+          All
+        </button>
 
-      <button type="button"
-        class="btn btn-default"
-        [class.active]="isActive('advanced')"
-        (click)="onClickButton('advanced')">
-        Advanced
-      </button>
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('beginner')"
+          (click)="onFilterButton('beginner')">
+          Beginner
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('intermediate')"
+          (click)="onFilterButton('intermediate')">
+          Intermediate
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('advanced')"
+          (click)="onFilterButton('advanced')">
+          Advanced
+        </button>
+      </div>
     </div>
 
     <div class="col-md-2">
@@ -80,7 +98,8 @@
   <sessions-list
     *ngIf="!!event.sessions && !addMode"
     [sessions]="event.sessions"
-    [filterBy]="filterByValue"></sessions-list>
+    [filterBy]="filterByValue"
+    [sortBy]="sortByValue"></sessions-list>
   <create-session
     *ngIf="addMode"
     (saveNewSession)="onSaveNewSession($event)"
