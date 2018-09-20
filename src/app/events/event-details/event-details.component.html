@@ -3,18 +3,18 @@
 
   <div class="row">
     <div class="col-md-11">
-      <h2>{{event.name}} </h2>
+      <h2>{{event.name | uppercase}} </h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <div>
-        <strong>Date:</strong> {{event.date}}</div>
+        <strong>Date:</strong> {{event.date | date:'longDate'}}</div>
       <div>
         <strong>Time:</strong> {{event.time}}</div>
       <div>
-        <strong>Price:</strong> ${{event.price}}</div>
+        <strong>Price:</strong> {{event.price | currency}}</div>
     </div>
     <div class="col-md-6" *ngIf="event.location">
       <address>
@@ -35,7 +35,55 @@
 
   <div class="row">
     <div class="col-md-2">
-      <h3>Sessions</h3>
+      <h3 class="sessions-title">Sessions</h3>
+    </div>
+
+    <div class="col-md-7">
+      <div class="btn-group btn-group-sm btn-group-sort-by">
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isSortActive('name')"
+          (click)="onSortButton('name')">
+          By Name
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isSortActive('votes')"
+          (click)="onSortButton('votes')">
+          By Votes
+        </button>
+      </div>
+
+      <div class="btn-group btn-group-sm">
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('all')"
+          (click)="onFilterButton('all')">
+          All
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('beginner')"
+          (click)="onFilterButton('beginner')">
+          Beginner
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('intermediate')"
+          (click)="onFilterButton('intermediate')">
+          Intermediate
+        </button>
+
+        <button type="button"
+          class="btn btn-default"
+          [class.active]="isFilterActive('advanced')"
+          (click)="onFilterButton('advanced')">
+          Advanced
+        </button>
+      </div>
     </div>
 
     <div class="col-md-2">
@@ -49,7 +97,9 @@
 
   <sessions-list
     *ngIf="!!event.sessions && !addMode"
-    [sessions]="event.sessions"></sessions-list>
+    [sessions]="event.sessions"
+    [filterBy]="filterByValue"
+    [sortBy]="sortByValue"></sessions-list>
   <create-session
     *ngIf="addMode"
     (saveNewSession)="onSaveNewSession($event)"

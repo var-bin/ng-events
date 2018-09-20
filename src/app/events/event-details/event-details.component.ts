@@ -11,12 +11,21 @@ import { IEvent } from "../shared/event.model";
   styles: [`
     .component { padding: 0 20px; }
     .event-image { height: 100px; }
+    .sessions-title {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    .btn-group-sort-by {
+      margin: 0 20px;
+    }
   `]
 })
 
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean = false;
+  filterBy: string = "all";
+  sortBy: string = "votes";
 
   constructor(
     private eventService: EventService,
@@ -44,5 +53,37 @@ export class EventDetailsComponent implements OnInit {
 
   onCancelNewSession() {
     this.toggleCreateForm();
+  }
+
+  get filterByValue() {
+    return this.filterBy;
+  }
+
+  set filterByValue(value: string) {
+    this.filterBy = value;
+  }
+
+  get sortByValue() {
+    return this.sortBy;
+  }
+
+  set sortByValue(value: string) {
+    this.sortBy = value;
+  }
+
+  isFilterActive(value: string) {
+    return this.filterByValue === value;
+  }
+
+  isSortActive(value: string) {
+    return this.sortByValue === value;
+  }
+
+  onFilterButton(value: string) {
+    this.filterByValue = value;
+  }
+
+  onSortButton(value: string) {
+    this.sortByValue = value;
   }
 }

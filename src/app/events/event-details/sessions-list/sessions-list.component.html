@@ -1,6 +1,14 @@
+<div [hidden]="visibleSession.length">
+  <hr/>
+
+  <h4>
+    No data
+  </h4>
+</div>
+
 <div class="row"
-  *ngFor="let session of sessions">
-  <div class="col-md-10">
+  *ngFor="let session of visibleSession">
+  <div class="col-md-12">
     <collapsible-well>
       <div data-well-title>
         {{session.name}}
@@ -10,7 +18,7 @@
       </div>
       <div data-well-body>
         <h6>{{session.presenter}}</h6>
-        <span>Duration: {{session.duration}}</span><br />
+        <span>Duration: {{session.duration | duration}}</span><br />
         <span>Level: {{session.level}}</span>
         <p>{{session.abstract}}</p>
       </div>
