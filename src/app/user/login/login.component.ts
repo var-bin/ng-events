@@ -30,10 +30,10 @@ export class LoginComponent {
       formValues.password
     );
 
-    this.router.navigate(["events"]);
+    this.router.navigate(["/events"]);
   }
 
   onCancel(): void {
-    this.router.navigate(["events"]);
+    this.router.navigate(["/events"]);
   }
 }
