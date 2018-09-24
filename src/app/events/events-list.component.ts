@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { ToastrService } from "../common/toastr.service";
+import { IToastr, TOASTR_TOKEN } from "../common/toastr.service";
 
 import { IEvent } from "./shared/event.model";
 
@@ -13,7 +13,7 @@ export class EventsListComponent implements OnInit {
   events: IEvent[];
 
   constructor(
-    private toastrService: ToastrService,
+    @Inject(TOASTR_TOKEN) private toastrService: IToastr,
     private route: ActivatedRoute
   ) {}
 

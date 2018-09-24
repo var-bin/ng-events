@@ -14,23 +14,27 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionsListComponent,
-  SessionListTableComponent
+  SessionListTableComponent,
+  DurationPipe
 } from "./events/index";
 
 import { Error404Component } from "./errors/error-404.component";
 import { NavComponent } from "./nav/nav.component";
+import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
 
 import { UserAuthService } from "./user/user-auth.service";
 
 import { appRoutes } from "../routes";
 
 import {
-  ToastrService,
+  TOASTR_TOKEN,
+  IToastr,
   SimpleModalComponent,
   ModalTriggerDirective,
   SelectRowDirective
 } from "./common/index";
 
+declare let toastr: IToastr;
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import {
     SessionsListComponent,
     ModalTriggerDirective,
     SessionListTableComponent,
-    SelectRowDirective
+    SelectRowDirective,
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
@@ -56,8 +62,14 @@ import {
   ],
   providers: [
     EventService,
-    ToastrService,
-    EventRouteActivator,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
+    {
+      provide: EventRouteActivator,
+      useClass: EventRouteActivator
+    },
     EventListResolver,
     UserAuthService
   ],
