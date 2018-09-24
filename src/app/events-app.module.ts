@@ -54,7 +54,10 @@ declare let toastr: IToastr;
       provide: TOASTR_TOKEN,
       useValue: toastr
     },
-    EventRouteActivator,
+    {
+      provide: EventRouteActivator,
+      useClass: EventRouteActivator
+    },
     EventListResolver,
     UserAuthService
   ],
