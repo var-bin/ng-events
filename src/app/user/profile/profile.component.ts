@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { UserAuthService } from "../user-auth.service";
+import { TOASTR_TOKEN, IToastr } from "../../common/toastr.service";
 
 @Component({
   templateUrl: "./profile.component.html",
@@ -46,6 +47,7 @@ export class UserProfileComponent implements OnInit {
   private lastName: FormControl;
 
   constructor(
+    @Inject(TOASTR_TOKEN) private toastrService: IToastr,
     private userAuthService: UserAuthService,
     private router: Router
   ) {}
@@ -70,7 +72,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate["/events"];
+    this.router.navigate(["/events"]);
   }
 
   onSubmit(data): void {
@@ -79,7 +81,8 @@ export class UserProfileComponent implements OnInit {
       data.lastName
     );
 
-    this.router.navigate["/events"];
+    this.router.navigate(["/events"]);
+    this.toastrService.success("Profile saved");
   }
 
   getErrorCSSClass(controlName: string): boolean {
