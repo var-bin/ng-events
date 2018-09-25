@@ -36,7 +36,7 @@ export class NavComponent {
     return this.userAuthService.firstName;
   }
 
-  onSubmitSearch(searchData) {
+  onSubmitSearch(searchData: string): void {
     console.log(searchData);
 
     this.eventService.searchSessions(searchData)
