@@ -348,10 +348,10 @@ export class EventService {
     let results: ISession[] = [];
 
     this.myEvents.forEach((event) => {
-      const matchSessions = event.sessions.filter(session => session.name.toLowerCase().indexOf(term) > -1);
-
-      matchSessions.map((session) => {
-        session["eventId"] = event.id;
+      const matchSessions = event.sessions
+        .filter(session => session.name.toLowerCase().indexOf(term) > -1)
+        .map((session) => {
+          session["eventId"] = event.id;
 
         return session;
       });
