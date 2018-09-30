@@ -8,6 +8,7 @@ import { Error404Component } from "./app/errors/error-404.component";
 import { EventRouteActivator } from "./app/events/event-route-activator.service";
 import { EventListResolver } from "./app/events/event-list-resolver.service";
 import { CreateSessionComponent } from "./app/events/event-details/create-session/create-session.component";
+import { UserModule } from "./app/user/user.module";
 
 const appRoutes: Routes = [
   {
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
   },
   {
     path: "user",
-    loadChildren: "app/user/user.module#UserModule"
+    loadChildren: () => UserModule
   }
 ];
 
