@@ -353,8 +353,8 @@ export class EventService {
         .map((session) => {
           session["eventId"] = event.id;
 
-        return session;
-      });
+          return session;
+        });
 
       results = results.concat(matchSessions);
     });
@@ -363,7 +363,7 @@ export class EventService {
 
     setTimeout(() => {
       emitter.emit(results);
-    }, 2000);
+    }, 1000);
 
     return emitter;
   }
