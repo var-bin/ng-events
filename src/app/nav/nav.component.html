@@ -64,8 +64,8 @@
 
 <simple-modal
   [modalTitle]="'Matching sessions'"
-  [hidden]="!foundItems?.length"
-  modalId="searchModal">
+  modalId="searchModal"
+  [hidden]="isHidden">
   <div class="list-group">
     <a class="list-group-item"
       *ngFor="let session of foundItems"
