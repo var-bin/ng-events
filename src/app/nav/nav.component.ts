@@ -20,8 +20,9 @@ import { ISession } from "../events/shared/session.model";
 })
 
 export class NavComponent {
-  searchData: string;
   foundItems: ISession[];
+  isHidden: boolean = true;
+  searchData: string;
 
   constructor(
     private userAuthService: UserAuthService,
@@ -36,14 +37,18 @@ export class NavComponent {
     return this.userAuthService.firstName;
   }
 
-  onSubmitSearch(searchData: string): void {
-    console.log(searchData);
+  onSubmitSearch(): void {
+    if (!this.searchData) {
+      return;
+    }
 
-    this.eventService.searchSessions(searchData)
-      .subscribe((sessions) => {
-        this.foundItems = sessions;
-
-        console.log("onSubmitSearch: ", this.foundItems);
+    this.eventService.searchSessions(this.searchData)
+      .subscribe((sessions: ISession[]) => {
+        if (sessions.length) {
+          this.foundItems = sessions;
+          this.isHidden = false;
+          this.searchData = "";
+        }
       });
   }
 }
