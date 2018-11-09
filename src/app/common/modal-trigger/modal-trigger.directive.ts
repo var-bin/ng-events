@@ -5,6 +5,11 @@ import {
   Input
 } from "@angular/core";
 
+import { fromEvent } from "rxjs/observable/fromEvent";
+import { Subscription } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+
+
 declare const $: any;
 
 @Directive({
@@ -13,16 +18,24 @@ declare const $: any;
 
 export class ModalTriggerDirective implements OnInit {
   private el: HTMLElement;
+  private clicksOrTriggersSubscription$: Subscription;
 
   @Input('modal-trigger') modalId: string;
 
-  constructor(
-    private ref: ElementRef
-  ) {
-    this.el = this.ref.nativeElement;
+  constructor(ref: ElementRef) {
+    this.el = ref.nativeElement;
   }
 
   ngOnInit() {
+    const clicks$ = fromEvent<Event>(this.el, "click");
+
+   /*  clicks$
+      .subscribe((value) => {
+        console.log('click$: ', value);
+
+        $(`#${this.modalId}`).modal();
+      }); */
+
     this.el.addEventListener("click", (e) => {
       $(`#${this.modalId}`).modal();
     });
