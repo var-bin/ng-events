@@ -35,9 +35,9 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       this.event = this.eventService.getEvent(+params["id"]);
-    });
 
-    this.addMode = false;
+      this.setDefaultValues();
+    });
   }
 
   toggleCreateForm(): void {
@@ -87,5 +87,11 @@ export class EventDetailsComponent implements OnInit {
 
   onSortButton(value: string) {
     this.sortByValue = value;
+  }
+
+  private setDefaultValues() {
+    this.addMode = false;
+    this.sortBy = "votes";
+    this.filterBy = "all";
   }
 }
