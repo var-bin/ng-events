@@ -10,10 +10,12 @@ declare const $: any;
 export class SimpleModalComponent {
   @Input() modalTitle: string;
   @Input() modalId: string;
+  @Input() closeOnBodyClick: boolean;
   @ViewChild("modalContainer") container: ElementRef;
 
   closeModal() {
-    console.log($, this.container.nativeElement);
-    $(this.container.nativeElement).modal("hide");
+    if (Boolean(this.closeOnBodyClick)) {
+      $(this.container.nativeElement).modal("hide");
+    }
   }
 }
