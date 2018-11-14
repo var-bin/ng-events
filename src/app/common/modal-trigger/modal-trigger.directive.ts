@@ -9,7 +9,6 @@ import { fromEvent } from "rxjs/observable/fromEvent";
 import { Subscription } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
-
 declare const $: any;
 
 @Directive({
