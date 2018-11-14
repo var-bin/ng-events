@@ -14,6 +14,7 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionsListComponent,
+  SessionListTableComponent,
   DurationPipe
 } from "./events/index";
 
@@ -21,10 +22,17 @@ import { Error404Component } from "./errors/error-404.component";
 import { NavComponent } from "./nav/nav.component";
 import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
 
-import { TOASTR_TOKEN, IToastr } from "./common/toastr.service";
 import { UserAuthService } from "./user/user-auth.service";
 
 import { appRoutes } from "../routes";
+
+import {
+  TOASTR_TOKEN,
+  IToastr,
+  SimpleModalComponent,
+  ModalTriggerDirective,
+  SelectRowDirective
+} from "./common/index";
 
 declare let toastr: IToastr;
 
@@ -33,12 +41,16 @@ declare let toastr: IToastr;
     EventsAppComponent,
     EventsListComponent,
     EventThumbnailComponent,
+    SimpleModalComponent,
     NavComponent,
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
     SessionsListComponent,
+    ModalTriggerDirective,
+    SessionListTableComponent,
+    SelectRowDirective,
     CollapsibleWellComponent,
     DurationPipe
   ],

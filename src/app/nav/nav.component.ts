@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 
 import { UserAuthService } from "../user/user-auth.service";
+import { EventService } from "../events/shared/event.service";
+import { ISession } from "../events/shared/session.model";
 
 @Component({
   selector: "events-nav",
@@ -18,7 +20,14 @@ import { UserAuthService } from "../user/user-auth.service";
 })
 
 export class NavComponent {
-  constructor(private userAuthService: UserAuthService) {}
+  foundItems: ISession[];
+  isHidden: boolean = true;
+  searchData: string;
+
+  constructor(
+    private userAuthService: UserAuthService,
+    private eventService: EventService
+  ) {}
 
   isAuthenticated(): boolean {
     return this.userAuthService.isAuthenticated();
@@ -26,5 +35,20 @@ export class NavComponent {
 
   get userName(): string {
     return this.userAuthService.firstName;
+  }
+
+  onSubmitSearch(): void {
+    if (!this.searchData) {
+      return;
+    }
+
+    this.eventService.searchSessions(this.searchData)
+      .subscribe((sessions: ISession[]) => {
+        if (sessions.length) {
+          this.foundItems = sessions;
+          this.isHidden = false;
+          this.searchData = "";
+        }
+      });
   }
 }
