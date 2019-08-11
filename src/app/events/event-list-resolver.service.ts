@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Resolve } from "@angular/router";
 
 import { map } from "rxjs/operators/map";
-import { Observable } from "rxjs/observable";
+import { Observable } from "rxjs/Observable";
 
 import { EventService } from "./shared/event.service";
 import { IEvent } from "./shared/event.model";
