@@ -1,5 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import {
+  Component,
+  OnInit,
+} from "@angular/core";
+
+import {
+  ActivatedRoute,
+  Params,
+} from "@angular/router";
 
 import { EventService } from "../shared/event.service";
 
@@ -18,18 +25,18 @@ import { IEvent } from "../shared/event.model";
     .btn-group-sort-by {
       margin: 0 20px;
     }
-  `]
+  `],
 })
 
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
-  addMode: boolean = false;
-  filterBy: string = "all";
-  sortBy: string = "votes";
+  addMode = false;
+  filterBy = "all";
+  sortBy = "votes";
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -57,22 +64,6 @@ export class EventDetailsComponent implements OnInit {
     this.toggleCreateForm();
   }
 
-  get filterByValue() {
-    return this.filterBy;
-  }
-
-  set filterByValue(value: string) {
-    this.filterBy = value;
-  }
-
-  get sortByValue() {
-    return this.sortBy;
-  }
-
-  set sortByValue(value: string) {
-    this.sortBy = value;
-  }
-
   isFilterActive(value: string) {
     return this.filterByValue === value;
   }
@@ -87,6 +78,22 @@ export class EventDetailsComponent implements OnInit {
 
   onSortButton(value: string) {
     this.sortByValue = value;
+  }
+
+  get filterByValue() {
+    return this.filterBy;
+  }
+
+  set filterByValue(value: string) {
+    this.filterBy = value;
+  }
+
+  get sortByValue() {
+    return this.sortBy;
+  }
+
+  set sortByValue(value: string) {
+    this.sortBy = value;
   }
 
   private setDefaultValues() {

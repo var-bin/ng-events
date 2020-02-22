@@ -1,12 +1,19 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Inject,
+} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { IToastr, TOASTR_TOKEN } from "../common/toastr.service";
+import {
+  IToastr,
+  TOASTR_TOKEN,
+} from "../common/toastr.service";
 
 import { IEvent } from "./shared/event.model";
 
 @Component({
-  templateUrl: "./events-list.component.html"
+  templateUrl: "./events-list.component.html",
 })
 
 export class EventsListComponent implements OnInit {

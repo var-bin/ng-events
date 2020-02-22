@@ -27,7 +27,17 @@ import { IEvent } from "../shared/event.model";
 
 export class CreateEventComponent {
   isDirty = false;
-  newEvent = {};
+  newEvent = {
+    name: "",
+    date: "",
+    time: "",
+    price: "",
+    address: "",
+    city: "",
+    country: "",
+    onlineUrl: "",
+    imageUrl: "",
+  };
 
   constructor(
     private router: Router,

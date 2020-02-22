@@ -12,12 +12,17 @@ export class UserAuthService {
       id: 1,
       firstName: "John",
       lastName: "Papa",
-      userName
+      userName,
     };
   }
 
   isAuthenticated(): boolean {
     return !!this.currentUser;
+  }
+
+  updateCurrentUser(fName: string, lName: string) {
+    this.firstName = fName;
+    this.lastName = lName;
   }
 
   get firstName(): string {
@@ -38,10 +43,5 @@ export class UserAuthService {
 
   set lastName(lName: string) {
     this.currentUser.lastName = lName;
-  }
-
-  updateCurrentUser(fName: string, lName: string) {
-    this.firstName = fName;
-    this.lastName = lName;
   }
 }

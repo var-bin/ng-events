@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "collapsible-well",
+  selector: "events-collapsible-well",
   templateUrl: "./collapsible-well.component.html"
 })
 
 export class CollapsibleWellComponent {
-  visible: boolean = true;
+  visible = true;
 
   toggleContent(): void {
     this.visible = !this.visible;

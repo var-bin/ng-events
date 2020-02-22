@@ -1,4 +1,8 @@
-import { TestBed, async } from "@angular/core/testing";
+import {
+  TestBed,
+  async,
+} from "@angular/core/testing";
+
 import { EventsAppComponent } from "./events-app.component";
 import { EventsListComponent } from "./events/events-list.component";
 import { NavComponent } from "./nav/nav.component";
