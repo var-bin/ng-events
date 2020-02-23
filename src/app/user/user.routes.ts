@@ -6,12 +6,12 @@ import { LoginComponent } from "./login/login.component";
 const userRoutes: Routes = [
   {
     path: "profile",
-    component: UserProfileComponent
+    component: UserProfileComponent,
   },
   {
     path: "login",
-    component: LoginComponent
-  }
+    component: LoginComponent,
+  },
 ];
 
 export { userRoutes };

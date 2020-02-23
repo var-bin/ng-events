@@ -54,7 +54,7 @@
             placeholder="Search Sessions">
         </div>
         <button class="btn btn-default"
-          modal-trigger="searchModal">
+          appModalTrigger="searchModal">
           Search
         </button>
       </form>
@@ -62,16 +62,15 @@
   </div>
 </div>
 
-<simple-modal
-  [modalTitle]="'Matching sessions'"
+<events-simple-modal
+  modalTitle="Matching sessions"
   modalId="searchModal"
-  [hidden]="isHidden"
-  [closeOnBodyClick]="false">
+  [hidden]="isHidden">
   <div class="list-group">
     <a class="list-group-item"
       *ngFor="let session of foundItems"
-      [routerLink]="['/events', session.eventId]">
+      [routerLink]="['/events', session.id]">
       {{ session.name }}
     </a>
   </div>
-</simple-modal>
+</events-simple-modal>

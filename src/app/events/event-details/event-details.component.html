@@ -95,14 +95,14 @@
     </div>
   </div>
 
-  <session-list-table></session-list-table>
-  <sessions-list
+  <events-session-list-table></events-session-list-table>
+  <events-sessions-list
     *ngIf="!!event.sessions && !addMode"
     [sessions]="event.sessions"
     [filterBy]="filterByValue"
-    [sortBy]="sortByValue"></sessions-list>
-  <create-session
+    [sortBy]="sortByValue"></events-sessions-list>
+  <events-create-session
     *ngIf="addMode"
     (saveNewSession)="onSaveNewSession($event)"
-    (cancelNewSession)="onCancelNewSession($event)"></create-session>
+    (cancelNewSession)="onCancelNewSession($event)"></events-create-session>
 </div>

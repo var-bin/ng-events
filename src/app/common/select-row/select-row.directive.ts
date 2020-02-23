@@ -1,7 +1,13 @@
-import { Directive, ElementRef, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Directive,
+  ElementRef,
+  OnInit,
+  Output,
+  EventEmitter,
+} from "@angular/core";
 
 @Directive({
-  selector: "[select-row]"
+  selector: "[appSelectRow]",
 })
 
 export class SelectRowDirective implements OnInit {

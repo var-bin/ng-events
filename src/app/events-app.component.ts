@@ -5,6 +5,6 @@ import { Component } from "@angular/core";
   template: `
     <events-nav></events-nav>
     <router-outlet></router-outlet>
-  `
+  `,
 })
 export class EventsAppComponent {}

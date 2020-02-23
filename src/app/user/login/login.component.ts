@@ -11,7 +11,7 @@ import { UserAuthService } from "../user-auth.service";
       float: right;
       padding-left: 10px;
     }
-  `]
+  `],
 })
 
 export class LoginComponent {
@@ -21,7 +21,7 @@ export class LoginComponent {
 
   constructor(
     private userAuthService: UserAuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   onLogin(formValues): void {

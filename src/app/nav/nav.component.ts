@@ -16,25 +16,21 @@ import { ISession } from "../events/shared/session.model";
         color: #fb8c00 !important;
       }
     `
-  ]
+  ],
 })
 
 export class NavComponent {
   foundItems: ISession[];
-  isHidden: boolean = true;
+  isHidden = true;
   searchData: string;
 
   constructor(
     private userAuthService: UserAuthService,
-    private eventService: EventService
+    private eventService: EventService,
   ) {}
 
   isAuthenticated(): boolean {
     return this.userAuthService.isAuthenticated();
-  }
-
-  get userName(): string {
-    return this.userAuthService.firstName;
   }
 
   onSubmitSearch(): void {
@@ -50,5 +46,9 @@ export class NavComponent {
           this.searchData = "";
         }
       });
+  }
+
+  get userName(): string {
+    return this.userAuthService.firstName;
   }
 }

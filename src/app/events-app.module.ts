@@ -1,7 +1,10 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from "@angular/forms";
 
 import {
   EventsAppComponent,
@@ -15,7 +18,7 @@ import {
   CreateSessionComponent,
   SessionsListComponent,
   SessionListTableComponent,
-  DurationPipe
+  DurationPipe,
 } from "./events/index";
 
 import { Error404Component } from "./errors/error-404.component";
@@ -31,7 +34,7 @@ import {
   IToastr,
   SimpleModalComponent,
   ModalTriggerDirective,
-  SelectRowDirective
+  SelectRowDirective,
 } from "./common/index";
 
 declare let toastr: IToastr;
@@ -52,27 +55,27 @@ declare let toastr: IToastr;
     SessionListTableComponent,
     SelectRowDirective,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     EventService,
     {
       provide: TOASTR_TOKEN,
-      useValue: toastr
+      useValue: toastr,
     },
     {
       provide: EventRouteActivator,
-      useClass: EventRouteActivator
+      useClass: EventRouteActivator,
     },
     EventListResolver,
-    UserAuthService
+    UserAuthService,
   ],
-  bootstrap: [EventsAppComponent]
+  bootstrap: [EventsAppComponent],
 })
 export class EventsAppModule { }

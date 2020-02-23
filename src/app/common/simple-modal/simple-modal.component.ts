@@ -1,16 +1,21 @@
-import { Component, Input, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  Input,
+  ViewChild,
+  ElementRef,
+} from "@angular/core";
 
 declare const $: any;
 
 @Component({
-  selector: "simple-modal",
-  templateUrl: "./simple-modal.component.html"
+  selector: "events-simple-modal",
+  templateUrl: "./simple-modal.component.html",
 })
 
 export class SimpleModalComponent {
   @Input() modalTitle: string;
   @Input() modalId: string;
-  @Input() closeOnBodyClick: boolean;
+  @Input() closeOnBodyClick = false;
   @ViewChild("modalContainer") container: ElementRef;
 
   closeModal() {

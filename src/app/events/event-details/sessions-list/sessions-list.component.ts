@@ -1,10 +1,14 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+} from "@angular/core";
 
 import { ISession } from "../../shared/session.model";
 
 @Component({
-  selector: "sessions-list",
-  templateUrl: "./sessions-list.component.html"
+  selector: "events-sessions-list",
+  templateUrl: "./sessions-list.component.html",
 })
 
 export class SessionsListComponent implements OnChanges {
@@ -36,8 +40,8 @@ export class SessionsListComponent implements OnChanges {
   }
 
   private sortByNameAsc(s1: ISession, s2: ISession): number {
-    if (s1.name > s2.name) return 1;
-    if (s1.name < s2.name) return -1;
+    if (s1.name > s2.name) { return 1; }
+    if (s1.name < s2.name) { return -1; }
   }
 
   private sortByVotesDesc(s1: ISession, s2: ISession): number {

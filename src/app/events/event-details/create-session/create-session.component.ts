@@ -1,11 +1,21 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+} from "@angular/core";
+
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+} from "@angular/forms";
 
 import { ISession } from "../../shared/session.model";
 import { restrictedWords } from "../../shared/restricted-words.validator";
 
 @Component({
-  selector: "create-session",
+  selector: "events-create-session",
   templateUrl: "./create-session.component.html",
   styles: [`
     .session-error__required,
@@ -46,7 +56,7 @@ import { restrictedWords } from "../../shared/restricted-words.validator";
     .session-error-max-length {
       background-color: antiquewhite;
     }
-  `]
+  `],
 })
 
 export class CreateSessionComponent implements OnInit {
@@ -81,8 +91,6 @@ export class CreateSessionComponent implements OnInit {
     };
 
     this.saveNewSession.emit(session);
-
-    console.log(formData, session);
   }
 
   getErrorCSSClass(controlName: string): boolean {
@@ -99,7 +107,6 @@ export class CreateSessionComponent implements OnInit {
 
   getRestrictedWordsErrorCSSClass(controlName: any): boolean {
     if (this.newSessionForm.controls[controlName].errors && this.newSessionForm.controls[controlName].errors.restrictedWords) {
-    console.log(this.newSessionForm.controls[controlName])
       return true;
     }
   }

@@ -14,36 +14,36 @@ const appRoutes: Routes = [
   {
     path: "events/new",
     component: CreateEventComponent,
-    canDeactivate: [EventRouteActivator]
+    canDeactivate: [EventRouteActivator],
   },
   {
     path: "events",
     component: EventsListComponent,
     resolve: {
-      events: EventListResolver
-    }
+      events: EventListResolver,
+    },
   },
   {
     path: "events/:id",
     component: EventDetailsComponent,
-    canActivate: [EventRouteActivator]
+    canActivate: [EventRouteActivator],
   },
   {
     path: "events/session/create",
-    component: CreateSessionComponent
+    component: CreateSessionComponent,
   },
   {
     path: "404",
-    component: Error404Component
+    component: Error404Component,
   },
   {
     path: "",
     redirectTo: "/events",
-    pathMatch: "full"
+    pathMatch: "full",
   },
   {
     path: "user",
-    loadChildren: () => UserModule
+    loadChildren: () => UserModule,
   }
 ];
 

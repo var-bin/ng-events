@@ -1,4 +1,7 @@
-import { Component, Input } from "@angular/core";
+import {
+  Component,
+  Input,
+} from "@angular/core";
 
 import { IEvent } from "./shared/event.model";
 
@@ -11,7 +14,7 @@ import { IEvent } from "./shared/event.model";
     .thumbnail { min-height: 248px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }
-  `]
+  `],
 })
 
 export class EventThumbnailComponent {

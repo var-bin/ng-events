@@ -1,9 +1,21 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  Component,
+  OnInit,
+  Inject,
+} from "@angular/core";
+
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { UserAuthService } from "../user-auth.service";
-import { TOASTR_TOKEN, IToastr } from "../../common/toastr.service";
+import {
+  TOASTR_TOKEN,
+  IToastr,
+} from "../../common/toastr.service";
 
 @Component({
   templateUrl: "./profile.component.html",
@@ -37,7 +49,7 @@ import { TOASTR_TOKEN, IToastr } from "../../common/toastr.service";
     .profile-error-pattern {
       background-color: antiquewhite;
     }
-  `]
+  `],
 })
 
 export class UserProfileComponent implements OnInit {
